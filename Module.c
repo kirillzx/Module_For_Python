@@ -3,15 +3,6 @@
 #include <math.h>
 
 
-
-
-double b[4][4]={
-    {4.2, 2.3, 3.2, 6.6},
-    {3.4, 2.3, 3.2, 3.2},
-    {4.4, 4.1, 1.2, 6.3},
-    {4.1, 2.3, 3.2, 5.5}
-};
-
 double NormEuclidean(void *f, int n){
   double *x;
   double res = 0;
@@ -61,7 +52,7 @@ double NormInfifnity(void *f, int n){
   return k;
 }
 
-double matrixNormOne(double f[][5], int n, int l){
+double matrixNormOne(int n, int l, double f[][l]){
     double sum, k;
     int i, j, m;
     double new[5] = {0};
@@ -83,12 +74,12 @@ double matrixNormOne(double f[][5], int n, int l){
     return k;
 }
 
-double matrixNormInfinity(double f[][5], int n, int l){
+double matrixNormInfinity(int n, int l, double f[][l]){
     double sum, k;
     int i, j, m;
     double new[3] = {0};
 
-    for(i=0; j<n; i++){
+    for(i=0; i<n; i++){
         sum = 0;
         for(j=0; j<l; j++){
             sum += fabs(f[i][j]);
@@ -115,12 +106,19 @@ int main()
         {4.1, 2.3, 3.3, 6.5, -2.3},
         {4.4, 5.1, 3.2, 4.2, -1.2}
     };
+    double b[4][4]={
+        {4.2, 2.3, 3.2, 6.6},
+        {3.4, 2.3, 3.2, 3.2},
+        {4.4, 4.1, 1.2, 6.3},
+        {4.1, 2.3, 3.2, 5.5}
+    };
     printf("Euclidean norm: %3.3lf\n", NormEuclidean(x1, n));
     printf("Manhattan distance: %3.3lf\n", NormManhattan(x1, n));
     printf("Infinity norm: %3.3lf\n", NormInfifnity(x1, n));
     printf("The Norm of the space Lp: %3.3lf\n", NormLp(x1, n, p));
 
-    printf("The matrix norm one: %3.3lf\n", matrixNormOne(a, 3, 5));
-    printf("The matrix norm infinity: %3.3lf\n", matrixNormInfinity(a, 3, 5));
+    printf("The matrix norm one: %3.3lf\n", matrixNormOne(3, 5, a));
+    printf("The matrix norm infinity: %3.3lf\n", matrixNormInfinity(3, 5, a));
+    // printf("The matrix norm infinity: %3.3lf\n", matrixNormInfinity(4, 4, b));
     return 0;
 }
