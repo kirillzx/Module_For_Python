@@ -122,5 +122,6 @@ int main()
     printf("The matrix norm one: %3.3lf\n", matrixNormOne(3, 5, a));
     printf("The matrix norm infinity: %3.3lf\n", matrixNormInfinity(3, 5, a));
     // printf("The matrix norm infinity: %3.3lf\n", matrixNormInfinity(4, 4, b));
+    printf("The Frobenius matrix norm%s\n");
     return 0;
 }
