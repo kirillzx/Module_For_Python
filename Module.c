@@ -54,7 +54,8 @@ double NormInfifnity(void *f, int n){
 
 double matrixNormOne(int n, int l, double f[][l]){
     double sum, k;
-    int i, j, m;
+    int i, j, m, len;
+    len = sizeof(f[0])/sizeof(f[0][0]);
     double new[5] = {0};
 
     for(j=0; j<l; j++){
@@ -76,7 +77,8 @@ double matrixNormOne(int n, int l, double f[][l]){
 
 double matrixNormInfinity(int n, int l, double f[][l]){
     double sum, k;
-    int i, j, m;
+    int i, j, m, len;
+
     double new[3] = {0};
 
     for(i=0; i<n; i++){
