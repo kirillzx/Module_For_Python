@@ -98,6 +98,19 @@ double matrixNormInfinity(int n, int l, double f[][l]){
     return k;
 }
 
+double matrixNormFrobenius(int n, int l, double f[][l]){
+    double sum;
+    int i, j;
+
+    for(i=0; i<n; i++){
+        for(j=0; j<l; j++){
+            sum += f[i][j] * f[i][j];
+        }
+    }
+
+    return sum;
+}
+
 int main()
 {
     int n = 3;
@@ -122,6 +135,6 @@ int main()
     printf("The matrix norm one: %3.3lf\n", matrixNormOne(3, 5, a));
     printf("The matrix norm infinity: %3.3lf\n", matrixNormInfinity(3, 5, a));
     // printf("The matrix norm infinity: %3.3lf\n", matrixNormInfinity(4, 4, b));
-    printf("The Frobenius matrix norm%s\n");
+    printf("The Frobenius matrix norm: %3.3lf\n", matrixNormFrobenius(3, 5, a));
     return 0;
 }
