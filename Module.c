@@ -108,7 +108,7 @@ double matrixNormFrobenius(int n, int l, double f[][l]){
         }
     }
 
-    return sum;
+    return sqrt(sum);
 }
 
 int main()
