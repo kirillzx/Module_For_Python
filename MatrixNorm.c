@@ -30,8 +30,8 @@ void deallocate(Matrix *matrix){
 
 Matrix *matrixNormFrobenius(Matrix *matrix){
     int i, j;
-    int rows = matrix1->rows;
-    int columns = matrix2->columns;
+    int n = matrix->rows;
+    int l = matrix->columns;
     double sum;
 
     for(i=0; i<n; i++){
@@ -44,10 +44,9 @@ Matrix *matrixNormFrobenius(Matrix *matrix){
 }
 
 Matrix *matrixNormInfinity(Matrix *matrix){
-    int i, j;
-    int rows = matrix1->rows;
-    int columns = matrix2->columns;
-    int length = matrix1->columns;
+    int i, j, m;
+    int n = matrix->rows;
+    int l = matrix->columns;
     double new[3] = {0};
     double sum, k;
 
@@ -69,10 +68,9 @@ Matrix *matrixNormInfinity(Matrix *matrix){
 }
 
 Matrix *matrixNormOne(Matrix *matrix){
-    int i, j;
-    int rows = matrix1->rows;
-    int columns = matrix2->columns;
-    int length = matrix1->columns;
+    int i, j, m;
+    int n = matrix->rows;
+    int l = matrix->columns;
     double new[5] = {0};
     double sum, k;
 
@@ -94,8 +92,8 @@ Matrix *matrixNormOne(Matrix *matrix){
 }
 
 int main(){
-    int rows, columns;
-    Matrix *matrix;
+    int n, l;
+    Matrix *a;
 
     n = 3; // rows
     m = 5; // columns
@@ -114,7 +112,7 @@ int main(){
     printf("The matrix norm infinity: %3.3lf\n", matrixNormInfinity(n, m, a));
     // printf("The matrix norm infinity: %3.3lf\n", matrixNormInfinity(4, 4, b));
     printf("The Frobenius matrix norm: %3.3lf\n", matrixNormFrobenius(n, m, a));
-    deallocate(matrix);
+    deallocate(a);
 
     return 0;
 }
