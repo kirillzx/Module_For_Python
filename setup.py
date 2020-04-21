@@ -2,11 +2,11 @@ from distutils.core import setup, Extension
 
 module1 = Extension(
 	'MatrixNorm',
-	sources = ['Module.c']
+	sources = ['MatrixNorm.c']
 )
 
 setup(
-	name = 'Module',
+	name = 'MatrixNorm',
 	version = '1.1',
 	description = 'Simple module',
 	ext_modules= [module1]
