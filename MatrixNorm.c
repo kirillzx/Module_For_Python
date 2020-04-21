@@ -1,6 +1,7 @@
 #include "MatrixNorm.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 Matrix *allocate(int rows, int columns){
     Matrix *matrix = malloc(sizeof(Matrix));
