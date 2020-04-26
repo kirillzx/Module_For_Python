@@ -93,7 +93,7 @@ Matrix *matrixNormOne(Matrix *matrix){
 }
 
 int main(){
-    int n, l;
+    int n, m;
     Matrix *a;
 
     n = 3; // rows
