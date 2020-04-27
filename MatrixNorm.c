@@ -125,17 +125,18 @@ static PyObject *MatrixNormFrobenius(PyObject *self, PyObject *args) {
 
 static PyObject *MatrixNormOne(PyObject *self, PyObject *args) {
     PyObject *list;
-    double  item, len1, len2, res, sum;
+    double  item, len1, len2, res, sum, *new;
     res = 0;
     int i, j;
-
 
     if (!PyArg_ParseTuple(args,"O", &list)) {
         return NULL;
     }
     len1 = PySequence_Fast_GET_SIZE(list);
     len2 = PySequence_Fast_GET_SIZE(PySequence_Fast_GET_ITEM(list,0));
-    double new[len2] = {0};
+
+    new = (double*)malloc(len2 * sizeof(double));
+
     for(j=0; j<len2; j++){
       sum = 0;
       PyObject *aux1 = PySequence_Fast_GET_ITEM(list,j);
@@ -153,12 +154,13 @@ static PyObject *MatrixNormOne(PyObject *self, PyObject *args) {
         res = new[i];
       }
     }
+    free(new);
     return Py_BuildValue("d", res);
 }
 
 static PyObject *MatrixNormInfinity(PyObject *self, PyObject *args) {
     PyObject *list;
-    double  item, len1, len2, res, sum;
+    double  item, len1, len2, res, sum, *new;
     int i, j;
 
     if (!PyArg_ParseTuple(args,"O", &list)) {
@@ -166,7 +168,9 @@ static PyObject *MatrixNormInfinity(PyObject *self, PyObject *args) {
     }
     len1 = PySequence_Fast_GET_SIZE(list);
     len2 = PySequence_Fast_GET_SIZE(PySequence_Fast_GET_ITEM(list,0));
-    double new[len1] = {0};
+
+    new = (double*)malloc(len1 * sizeof(double));
+
     for(i=0; i<len1; i++){
       sum = 0;
       PyObject *aux1 = PySequence_Fast_GET_ITEM(list,i);
@@ -184,6 +188,7 @@ static PyObject *MatrixNormInfinity(PyObject *self, PyObject *args) {
         res = new[i];
       }
     }
+    free(new);
     return Py_BuildValue("d", res);
 }
 
