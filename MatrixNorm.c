@@ -100,7 +100,7 @@ static PyObject *MatrixNormLp(PyObject *self, PyObject *args) {
     return Py_BuildValue("d", pow(res, 1/p));
 }
 
-static PyObject *matrixNormFrobenius(PyObject *self, PyObject *args) {
+static PyObject *MatrixNormFrobenius(PyObject *self, PyObject *args) {
     PyObject *list;
     double  item, len1, len2, res;
     res = 0;
@@ -123,7 +123,7 @@ static PyObject *matrixNormFrobenius(PyObject *self, PyObject *args) {
     return Py_BuildValue("d", sqrt(res));
 }
 
-static PyObject *matrixNormOne(PyObject *self, PyObject *args) {
+static PyObject *MatrixNormOne(PyObject *self, PyObject *args) {
     PyObject *list;
     double  item, len1, len2, res, sum;
     res = 0;
@@ -143,7 +143,7 @@ static PyObject *matrixNormOne(PyObject *self, PyObject *args) {
         PyObject *aux2 = PySequence_Fast_GET_ITEM(aux1,i);
 
         item = PyFloat_AsDouble(aux2);
-        sum += item;
+        sum += fabs(item);
       }
       new[j] = sum;
     }
@@ -156,7 +156,7 @@ static PyObject *matrixNormOne(PyObject *self, PyObject *args) {
     return Py_BuildValue("d", res);
 }
 
-static PyObject *matrixNormInfinity(PyObject *self, PyObject *args) {
+static PyObject *MatrixNormInfinity(PyObject *self, PyObject *args) {
     PyObject *list;
     double  item, len1, len2, res, sum;
     int i, j;
@@ -210,33 +210,32 @@ static PyMethodDef ownmod_methods[] = {
                 "NormInfinity", // название функции внутри python
                 NormInfinity, // функция C
                 METH_VARARGS, // макрос, поясняющий, что функция у нас с аргументами
-                "calculate the p norm of the space L" // документация для функции внутри python
+                "calculate the infinity norm" // документация для функции внутри python
         },
         {
                 "MatrixNormLp", // название функции внутри python
                 MatrixNormLp, // функция C
                 METH_VARARGS, // макрос, поясняющий, что функция у нас с аргументами
-                "calculate the p norm of the space L" // документация для функции внутри python
+                "calculate the matrix norm p of the space L" // документация для функции внутри python
         },
         {
-                "matrixNormFrobenius", // название функции внутри python
-                matrixNormFrobenius, // функция C
+                "MatrixNormFrobenius", // название функции внутри python
+                MatrixNormFrobenius, // функция C
                 METH_VARARGS, // макрос, поясняющий, что функция у нас с аргументами
-                "calculate the p norm of the space L" // документация для функции внутри python
+                "calculate the Frobenius norm" // документация для функции внутри python
         },
         {
-                "matrixNormOne", // название функции внутри python
-                matrixNormOne, // функция C
+                "MatrixNormOne", // название функции внутри python
+                MatrixNormOne, // функция C
                 METH_VARARGS, // макрос, поясняющий, что функция у нас с аргументами
-                "calculate the p norm of the space L" // документация для функции внутри python
+                "calculate the matrix norm one" // документация для функции внутри python
         },
         {
-                "matrixNormInfinity", // название функции внутри python
-                matrixNormInfinity, // функция C
+                "MatrixNormInfinity", // название функции внутри python
+                MatrixNormInfinity, // функция C
                 METH_VARARGS, // макрос, поясняющий, что функция у нас с аргументами
-                "calculate the p norm of the space L" // документация для функции внутри python
+                "calculate the infinity matrix norm" // документация для функции внутри python
         },
-
 
         { NULL, NULL, 0, NULL }
 };
