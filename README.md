@@ -1,5 +1,5 @@
 # Module_For_Python
-Developed a C module for Python for calculating the various norms of vectors and matrix.
+In many applications you need to use some measures to evaluate the matrix or stop a numercial method therefore was developed a C module for Python for calculating the various norms of vectors and matrix.
 
 ## How start to work with module?
 just type *from MatrixNorm import**
