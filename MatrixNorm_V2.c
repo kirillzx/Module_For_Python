@@ -76,13 +76,13 @@ static PyMethodDef ownmod_methods[] = {
         },
         {
                 "NormManhattan", // название функции внутри python
-                NormEuclidean, // функция C
+                NormManhattan, // функция C
                 METH_VARARGS, // макрос, поясняющий, что функция у нас с аргументами
                 "calculate the Manhattan distance" // документация для функции внутри python
         },
         {
                 "NormLp", // название функции внутри python
-                NormEuclidean, // функция C
+                NormLp, // функция C
                 METH_VARARGS, // макрос, поясняющий, что функция у нас с аргументами
                 "calculate the p norm of the space L" // документация для функции внутри python
         },
