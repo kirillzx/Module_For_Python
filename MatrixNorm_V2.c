@@ -7,7 +7,7 @@ static PyObject *NormEuclidean(PyObject *self, PyObject *args) {
     res = 0;
     int i;
 
-    if (!PyArg_ParseTuple(args,"OO", &list)) {
+    if (!PyArg_ParseTuple(args,"O", &list)) {
         return NULL;
     }
     len1 = PySequence_Fast_GET_SIZE(list);
@@ -36,7 +36,7 @@ static PyObject *NormManhattan(PyObject *self, PyObject *args) {
     res = 0;
     int i;
 
-    if (!PyArg_ParseTuple(args,"OO", &list)) {
+    if (!PyArg_ParseTuple(args,"O", &list)) {
         return NULL;
     }
     len1 = PySequence_Fast_GET_SIZE(list);
@@ -55,7 +55,7 @@ static PyObject *NormLp(PyObject *self, PyObject *args) {
     int i, p;
     p = 5;
 
-    if (!PyArg_ParseTuple(args,"OO", &list)) {
+    if (!PyArg_ParseTuple(args,"O", &list)) {
         return NULL;
     }
     len1 = PySequence_Fast_GET_SIZE(list);
