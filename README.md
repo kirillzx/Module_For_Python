@@ -11,4 +11,4 @@ just type *from MatrixNorm import**
 5. matrixNormOne - calculate the matrix norm one
 6. matrixNormInfinity - calculate the infinity matrix norm
 7. matrixNormFrobenius - calculate the Frobenius norm
-8. matrixNormLp
+8. matrixNormLp - calculate the matrix norm p of the space L
