@@ -46,7 +46,7 @@ static PyObject *NormInfinity(PyObject *self, PyObject *args) {
         return NULL;
     }
     len1 = PySequence_Fast_GET_SIZE(list);
-    res = PySequence_Fast_GET_ITEM(list, 0);
+    res = PyFloat_AsDouble(PySequence_Fast_GET_ITEM(list, 0));
     for(i=0; i<len1; i++){
       PyObject *aux = PySequence_Fast_GET_ITEM(list,i);
       item = PyFloat_AsDouble(aux);
@@ -60,30 +60,30 @@ static PyObject *NormInfinity(PyObject *self, PyObject *args) {
 
 static PyObject *NormLp(PyObject *self, PyObject *args) {
     PyObject *list;
-    double  item, len1, res;
+    double  p, item, len1, res;
     res = 0;
-    int i, p;
+    int i;
 
-    if (!PyArg_ParseTuple(args,"Ob", &list, &p)) {
+    if (!PyArg_ParseTuple(args,"Od", &list, &p)) {
         return NULL;
     }
     len1 = PySequence_Fast_GET_SIZE(list);
     for(i=0; i<len1; i++){
       PyObject *aux = PySequence_Fast_GET_ITEM(list,i);
       item = PyFloat_AsDouble(aux);
-      res +=  pow(fabs(item), p);
+      res +=  pow(fabs(item), (double)p);
     }
-    return Py_BuildValue("d", pow(res, 1/p));
+    return Py_BuildValue("d", pow(res, (double)1/p));
 }
 
 
 static PyObject *MatrixNormLp(PyObject *self, PyObject *args) {
     PyObject *list;
-    double  item, len1, len2, res;
+    double  p, item, len1, len2, res;
     res = 0;
-    int i, j, p;
+    int i, j;
 
-    if (!PyArg_ParseTuple(args,"Ob", &list, &p)) {
+    if (!PyArg_ParseTuple(args,"Od", &list, &p)) {
         return NULL;
     }
     len1 = PySequence_Fast_GET_SIZE(list);
@@ -94,10 +94,10 @@ static PyObject *MatrixNormLp(PyObject *self, PyObject *args) {
         PyObject *aux2 = PySequence_Fast_GET_ITEM(aux1,j);
 
         item = PyFloat_AsDouble(aux2);
-        res +=  pow(fabs(item), p);
+        res +=  pow(fabs(item), (double)p);
     }
     }
-    return Py_BuildValue("d", pow(res, 1/p));
+    return Py_BuildValue("d", pow(res, (double)1/p));
 }
 
 static PyObject *MatrixNormFrobenius(PyObject *self, PyObject *args) {
@@ -154,7 +154,7 @@ static PyObject *MatrixNormOne(PyObject *self, PyObject *args) {
         res = new[i];
       }
     }
-    free(new);
+    //free(new);
     return Py_BuildValue("d", res);
 }
 
@@ -188,7 +188,7 @@ static PyObject *MatrixNormInfinity(PyObject *self, PyObject *args) {
         res = new[i];
       }
     }
-    free(new);
+    //free(new);
     return Py_BuildValue("d", res);
 }
 
