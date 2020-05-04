@@ -81,7 +81,7 @@ static PyObject *MatrixNormLp(PyObject *self, PyObject *args) {
     PyObject *list;
     double  p, item, res;
     res = 0;
-    int i, j, len1, len2,;
+    int i, j, len1, len2;
 
     if (!PyArg_ParseTuple(args,"Od", &list, &p)) {
         return NULL;
@@ -123,6 +123,75 @@ static PyObject *MatrixNormFrobenius(PyObject *self, PyObject *args) {
     return Py_BuildValue("d", sqrt(res));
 }
 
+static PyObject *MatrixNormOne(PyObject *self, PyObject *args) {
+    PyObject *list;
+    double  item, res, sum, *new;
+    res = 0;
+    int i, j, len1, len2;
+
+    if (!PyArg_ParseTuple(args,"O", &list)) {
+        return NULL;
+    }
+    len1 = PySequence_Fast_GET_SIZE(list);
+    len2 = PySequence_Fast_GET_SIZE(PySequence_Fast_GET_ITEM(list,0));
+
+    new = (double*)malloc(len2 * sizeof(double));
+
+    for(j=0; j<len2; j++){
+      sum = 0;
+      PyObject *aux1 = PySequence_Fast_GET_ITEM(list,j);
+      for(i=0; i<len1; i++) {
+        PyObject *aux2 = PySequence_Fast_GET_ITEM(aux1,i);
+
+        item = PyFloat_AsDouble(aux2);
+        sum += fabs(item);
+      }
+      new[j] = sum;
+    }
+    res = new[0];
+    for(i=0; i<len2; i++){
+      if(fabs(new[i]) > fabs(res)){
+        res = new[i];
+      }
+    }
+    free(new);
+    return Py_BuildValue("d", res);
+}
+
+static PyObject *MatrixNormInfinity(PyObject *self, PyObject *args) {
+    PyObject *list;
+    double  item, res, sum, *new;
+    int i, j, len1, len2;
+
+    if (!PyArg_ParseTuple(args,"O", &list)) {
+        return NULL;
+    }
+    len1 = PySequence_Fast_GET_SIZE(list);
+    len2 = PySequence_Fast_GET_SIZE(PySequence_Fast_GET_ITEM(list,0));
+
+    new = (double*)malloc(len1 * sizeof(double));
+
+    for(i=0; i<len1; i++){
+      sum = 0;
+      PyObject *aux1 = PySequence_Fast_GET_ITEM(list,i);
+      for(j=0; j<len2; j++) {
+        PyObject *aux2 = PySequence_Fast_GET_ITEM(aux1,j);
+
+        item = PyFloat_AsDouble(aux2);
+        sum += fabs(item);
+      }
+    new[i] = sum;
+    }
+    res = new[0];
+    for(i=0; i<len1; i++){
+      if(fabs(new[i]) > fabs(res)){
+        res = new[i];
+      }
+    }
+    free(new);
+    return Py_BuildValue("d", res);
+}
+
 static PyMethodDef ownmod_methods[] = {
         {
                 "NormEuclidean", // название функции внутри python
@@ -160,6 +229,19 @@ static PyMethodDef ownmod_methods[] = {
                 METH_VARARGS, // макрос, поясняющий, что функция у нас с аргументами
                 "calculate the Frobenius norm" // документация для функции внутри python
         },
+        {
+                "MatrixNormOne", // название функции внутри python
+                MatrixNormOne, // функция C
+                METH_VARARGS, // макрос, поясняющий, что функция у нас с аргументами
+                "calculate the matrix norm one" // документация для функции внутри python
+        },
+        {
+                "MatrixNormInfinity", // название функции внутри python
+                MatrixNormInfinity, // функция C
+                METH_VARARGS, // макрос, поясняющий, что функция у нас с аргументами
+                "calculate the infinity matrix norm" // документация для функции внутри python
+        },
+
         { NULL, NULL, 0, NULL }
 };
 
