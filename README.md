@@ -6,7 +6,7 @@ Kirill Zakharov, Maxim Zotov
 
 ## How start to work with module?
 ```python
-just type *from MatrixNorm import**
+just type from MatrixNorm import *
 ``````
 ## Functions
 1. NormManhattan - calculate the Manhattan distance
@@ -19,11 +19,11 @@ just type *from MatrixNorm import**
 8. matrixNormLp - calculate the matrix norm p of the space L
 |Fucntions|Description|
 |---------|:---------:|
-|NormManhattan|calculate the Manhattan distance
-|NormEuclidean|calculate the  Euclidean norm
-|NormInfinity|calculate the Infinity norm
-|NormLp|calculate the p norm of the space L
-|matrixNormOne|calculate the matrix norm one
-|matrixNormInfinity|calculate the infinity matrix norm
-|matrixNormFrobenius|calculate the Frobenius norm
-|matrixNormLp|calculate the matrix norm p of the space L
+|NormManhattan|calculate the Manhattan distance|
+|NormEuclidean|calculate the  Euclidean norm|
+|NormInfinity|calculate the Infinity norm|
+|NormLp|calculate the p norm of the space L|
+|matrixNormOne|calculate the matrix norm one|
+|matrixNormInfinity|calculate the infinity matrix norm|
+|matrixNormFrobenius|calculate the Frobenius norm|
+|matrixNormLp|calculate the matrix norm p of the space L|
