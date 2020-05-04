@@ -3,9 +3,9 @@
 
 static PyObject *NormEuclidean(PyObject *self, PyObject *args) {
     PyObject *list;
-    double  item, len1, res;
+    double  item, res;
     res = 0;
-    int i;
+    int i, len1;
 
     if (!PyArg_ParseTuple(args,"O", &list)) {
         return NULL;
@@ -21,9 +21,9 @@ static PyObject *NormEuclidean(PyObject *self, PyObject *args) {
 
 static PyObject *NormManhattan(PyObject *self, PyObject *args) {
     PyObject *list;
-    double  item, len1, res;
+    double  item, res;
     res = 0;
-    int i;
+    int i, len1;
 
     if (!PyArg_ParseTuple(args,"O", &list)) {
         return NULL;
@@ -39,8 +39,8 @@ static PyObject *NormManhattan(PyObject *self, PyObject *args) {
 
 static PyObject *NormInfinity(PyObject *self, PyObject *args) {
     PyObject *list;
-    double  item, len1, res;
-    int i;
+    double  item, res;
+    int i, len1;
 
     if (!PyArg_ParseTuple(args,"O", &list)) {
         return NULL;
@@ -60,9 +60,9 @@ static PyObject *NormInfinity(PyObject *self, PyObject *args) {
 
 static PyObject *NormLp(PyObject *self, PyObject *args) {
     PyObject *list;
-    double  p, item, len1, res;
+    double  p, item, res;
     res = 0;
-    int i;
+    int i, len1;
 
     if (!PyArg_ParseTuple(args,"Od", &list, &p)) {
         return NULL;
@@ -79,9 +79,9 @@ static PyObject *NormLp(PyObject *self, PyObject *args) {
 
 static PyObject *MatrixNormLp(PyObject *self, PyObject *args) {
     PyObject *list;
-    double  p, item, len1, len2, res;
+    double  p, item, res;
     res = 0;
-    int i, j;
+    int i, j, len1, len2,;
 
     if (!PyArg_ParseTuple(args,"Od", &list, &p)) {
         return NULL;
@@ -102,9 +102,9 @@ static PyObject *MatrixNormLp(PyObject *self, PyObject *args) {
 
 static PyObject *MatrixNormFrobenius(PyObject *self, PyObject *args) {
     PyObject *list;
-    double  item, len1, len2, res;
+    double  item, res;
     res = 0;
-    int i, j;
+    int i, j, len1, len2;
 
     if (!PyArg_ParseTuple(args,"O", &list)) {
         return NULL;
@@ -125,9 +125,9 @@ static PyObject *MatrixNormFrobenius(PyObject *self, PyObject *args) {
 
 static PyObject *MatrixNormOne(PyObject *self, PyObject *args) {
     PyObject *list;
-    double  item, len1, len2, res, sum, *new;
+    double  item, res, sum, *new;
     res = 0;
-    int i, j;
+    int i, j, len1, len2;
 
     if (!PyArg_ParseTuple(args,"O", &list)) {
         return NULL;
@@ -154,14 +154,14 @@ static PyObject *MatrixNormOne(PyObject *self, PyObject *args) {
         res = new[i];
       }
     }
-    //free(new);
+    free(new);
     return Py_BuildValue("d", res);
 }
 
 static PyObject *MatrixNormInfinity(PyObject *self, PyObject *args) {
     PyObject *list;
-    double  item, len1, len2, res, sum, *new;
-    int i, j;
+    double  item, res, sum, *new;
+    int i, j, len1, len2;
 
     if (!PyArg_ParseTuple(args,"O", &list)) {
         return NULL;
@@ -188,7 +188,7 @@ static PyObject *MatrixNormInfinity(PyObject *self, PyObject *args) {
         res = new[i];
       }
     }
-    //free(new);
+    free(new);
     return Py_BuildValue("d", res);
 }
 
