@@ -16,5 +16,7 @@ NormManhattan      |calculate the Manhattan distance
 NormEuclidean      |calculate the  Euclidean norm             
 NormInfinity       |calculate the Infinity norm               
 NormLp             |calculate the p norm of the space L       
-matrixNormOne      |calculate the matrix norm one             
-matrixNormInfinity |calculate the infinity matrix norm        
+MatrixNormOne      |calculate the matrix norm one             
+MatrixNormInfinity |calculate the infinity matrix norm        
+MatrixNormFrobenius|calculate the Frobenius matrix norm
+MatrixNormLp|calculate the p matrix norm of the space L   
