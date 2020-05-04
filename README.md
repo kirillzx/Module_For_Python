@@ -17,13 +17,13 @@ just type from MatrixNorm import *
 6. matrixNormInfinity - calculate the infinity matrix norm
 7. matrixNormFrobenius - calculate the Frobenius norm
 8. matrixNormLp - calculate the matrix norm p of the space L
-|Fucntions|Description|
-|---------|:---------:|
-|NormManhattan|calculate the Manhattan distance|
-|NormEuclidean|calculate the  Euclidean norm|
-|NormInfinity|calculate the Infinity norm|
-|NormLp|calculate the p norm of the space L|
-|matrixNormOne|calculate the matrix norm one|
-|matrixNormInfinity|calculate the infinity matrix norm|
-|matrixNormFrobenius|calculate the Frobenius norm|
-|matrixNormLp|calculate the matrix norm p of the space L|
+|Fucntions          |Description                               |
+|-------------------|:----------------------------------------:|
+|NormManhattan      |calculate the Manhattan distance          |
+|NormEuclidean      |calculate the  Euclidean norm             |
+|NormInfinity       |calculate the Infinity norm               |
+|NormLp             |calculate the p norm of the space L       |
+|matrixNormOne      |calculate the matrix norm one             |
+|matrixNormInfinity |calculate the infinity matrix norm        |
+|matrixNormFrobenius|calculate the Frobenius norm              |
+|matrixNormLp       |calculate the matrix norm p of the space L|
