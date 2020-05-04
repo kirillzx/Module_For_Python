@@ -10,7 +10,7 @@ just type from MatrixNorm import *
 ``````
 ## Functions
 
-Fucntions|Description                               
+Functions|Description                               
 ---|--- 
 NormManhattan      |calculate the Manhattan distance          
 NormEuclidean      |calculate the  Euclidean norm             
