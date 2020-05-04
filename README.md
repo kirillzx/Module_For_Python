@@ -25,5 +25,11 @@ just type from MatrixNorm import *
 |NormLp             |calculate the p norm of the space L       |
 |matrixNormOne      |calculate the matrix norm one             |
 |matrixNormInfinity |calculate the infinity matrix norm        |
+
+
+
+sfdf|csd
+---|---
+ewccec|csadc
 |matrixNormFrobenius|calculate the Frobenius norm              |
 |matrixNormLp       |calculate the matrix norm p of the space L|
