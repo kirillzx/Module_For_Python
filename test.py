@@ -10,7 +10,5 @@ print("Result: {:.3}   Answer: 5".format(NormInfinity(x)))
 print("Result: {:.3}   Answer: 5.593".format(NormLp(x, 4)))
 
 #Matrix
-print("Result: {:.3}   Answer: 10".format(MatrixNormOne(a)))
-print("Result: {:.3}   Answer: 11".format(MatrixNormInfinity(a)))
 print("Result: {:.3}   Answer: 9.539".format(MatrixNormLp(a, 2)))
 print("Result: {:.3}   Answer: 9.539".format(MatrixNormFrobenius(a)))
